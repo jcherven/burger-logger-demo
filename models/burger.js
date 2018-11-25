@@ -6,8 +6,13 @@ var queryBurger = {
             callBack(res);
         });
     },
-    insertOne: function(tableInput, colInput, valInput, callBack){
-        orm.insertOne(tableInput, colInput, valInput, function(res){
+    insertNew: function(colInput, valInput, callBack) {
+        orm.insertNew("burgers", colInput, valInput, function(res) {
+            callBack(res);
+        });
+    },
+    updateOne: function(colInput, valInput, recordId, callBack){
+        orm.insertNew("burgers", colInput, valInput, recordId, function(res){
             callBack(res);
         });
     }
