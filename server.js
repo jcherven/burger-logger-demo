@@ -1,10 +1,10 @@
-var express = require('express');
-var helmet = require('helmet');
-var exphbs = require('express-handlebars');
-var routes = require('./controllers/burgers_controller');
+const express = require('express');
+const helmet = require('helmet');
+const exphbs = require('express-handlebars');
+const routes = require('./controllers/burgers-controller');
 
-var port = process.env.PORT || 3000;
-var app = express();
+const port = process.env.PORT || 3000;
+const app = express();
 
 app.use(helmet());
 app.use(express.static('public'));

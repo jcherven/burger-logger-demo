@@ -1,27 +1,25 @@
 var connection = require('./connection.js');
 
 var orm = {
-    selectAll: function(tableInput, callBack) {
+    selectAll: function(tableInput, callBackFn){
         var queryString =  'SELECT * FROM ??';
-        connection.query(queryString, [tableInput], function(err, result) {
+        connection.query(queryString, [tableInput], function(err, result){
             if (err) throw err;
-            callBack(result);
+            callBackFn(result);
         });
     },
-    
-    insertNew: function(tableInput, colInput, valInput, callBack) {
+    insertNew: function(tableInput, colInput, valInput, callBackFn){
         var queryString = 'INSERT INTO ?? ( ?? ) VALUE ( ? )';
-        connection.query(queryString, [tableInput, colInput, valInput], function(err, result) {
+        connection.query(queryString, [tableInput, colInput, valInput], function(err, result){
             if (err) throw err;
-            callBack(result);
+            callBackFn(result);
         });
     },
-
-    updateOne: function(tableInput, colInput, valInput, recordId, callBack) {
-        var queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
-        connection.query(queryString, [tableInput, colInput, valInput, colInput, recordId], function(err, result) {
+    updateOne: function(tableInput, valInput, recordId, callBackFn){
+        var queryString = 'UPDATE ?? SET ? WHERE ?';
+        connection.query(queryString, [tableInput, valInput, recordId], function(err, result){
             if (err) throw err;
-            callBack(result);
+            callBackFn(result);
         });
     }
 };
